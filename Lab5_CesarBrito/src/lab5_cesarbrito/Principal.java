@@ -7,6 +7,9 @@ package lab5_cesarbrito;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -20,6 +23,8 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         setLocationRelativeTo(null);
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jtree.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
     }
 
     private void isCeo() {
@@ -249,18 +254,23 @@ public class Principal extends javax.swing.JFrame {
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
         jd_todos = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_todos = new javax.swing.JTable();
         jd_yo = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla_yo = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         but_Login = new javax.swing.JButton();
         but_signup = new javax.swing.JButton();
-        but_signout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtree = new javax.swing.JTree();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jLabel1.setText("Usuario:");
@@ -1299,26 +1309,58 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
+        tabla_todos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero del Registro", "Usuario", "Nombre", "Ocupacion"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla_todos);
+
         javax.swing.GroupLayout jd_todosLayout = new javax.swing.GroupLayout(jd_todos.getContentPane());
         jd_todos.getContentPane().setLayout(jd_todosLayout);
         jd_todosLayout.setHorizontalGroup(
             jd_todosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+            .addGroup(jd_todosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1071, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jd_todosLayout.setVerticalGroup(
             jd_todosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+            .addGroup(jd_todosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
+
+        tabla_yo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Password", "Ocupacion"
+            }
+        ));
+        jScrollPane3.setViewportView(tabla_yo);
 
         javax.swing.GroupLayout jd_yoLayout = new javax.swing.GroupLayout(jd_yo.getContentPane());
         jd_yo.getContentPane().setLayout(jd_yoLayout);
         jd_yoLayout.setHorizontalGroup(
             jd_yoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1206, Short.MAX_VALUE)
+            .addGroup(jd_yoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jd_yoLayout.setVerticalGroup(
             jd_yoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_yoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1337,9 +1379,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        but_signout.setText("Sign Out");
-        but_signout.setEnabled(false);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1347,46 +1386,64 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(393, 393, 393)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(but_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(but_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(but_signout, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(but_signup, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(but_Login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(393, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(67, 67, 67)
                 .addComponent(but_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(but_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(but_signout, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addGap(121, 121, 121))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel1);
+
+        jScrollPane2.setViewportView(jtree);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("JTree", jPanel2);
 
         jMenu1.setText("Listar");
-
-        jMenu3.setText("Listar Todos");
-        jMenu1.add(jMenu3);
+        jMenu1.setEnabled(false);
         jMenu1.add(jSeparator1);
 
-        jMenu4.setText("Mis Datos");
-        jMenu1.add(jMenu4);
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Todos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Mis Datos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -1435,22 +1492,35 @@ public class Principal extends javax.swing.JFrame {
                 if (usuario.equals(personas.get(i).getUsuario()) && pass.equals(personas.get(i).getPassword())) {
                     cont = 1;
                     Persona x = personas.get(i);
+                    String ocupacion = "";
                     chosen = personas.get(i);;
                     if (x instanceof CEO) {
                         isCeo();
+                        ocupacion = "CEO";
                     } else if (x instanceof Admin) {
                         isAdmin();
+                        ocupacion = "Administracion";
                     } else if (x instanceof Consejo) {
                         isConsejo();
+                        ocupacion = "Consejo Academico";
                     } else if (x instanceof Planta) {
                         isPlanta();
+                        ocupacion = "Personal de Planta";
                     } else if (x instanceof Docente) {
                         isDocente();
+                        ocupacion = "Docente";
                     } else if (x instanceof Estudiante) {
                         isEstudiante();
+                        ocupacion = "Estudiante";
                     } else if (x instanceof Tutor) {
                         isTutor();
+                        ocupacion = "Tutor";
                     }
+                    Object[] nuevo = {x.getUsuario(), x.getPassword(), ocupacion};
+                    DefaultTableModel t = (DefaultTableModel) tabla_yo.getModel();
+                    tabla_yo.removeAll();
+                    t.addRow(nuevo);
+                    tabla_yo.setModel(t);
                     break;
                 }
             }
@@ -1459,8 +1529,9 @@ public class Principal extends javax.swing.JFrame {
                 pf_password.setText("");
                 jd_login.setVisible(false);
                 but_Login.setEnabled(false);
-                but_signout.setEnabled(true);
-            } else{
+                //but_signout.setEnabled(true);
+                jMenu1.setEnabled(true);
+            } else {
                 JOptionPane.showMessageDialog(this, "No se encontro usuario, Ingrese otra vez");
             }
 
@@ -1498,7 +1569,9 @@ public class Principal extends javax.swing.JFrame {
             edad = Integer.parseInt(ceo_edad.getText());
             experiencia = Integer.parseInt(ceo_exp.getText());
             laborando = Integer.parseInt(ceo_laborando.getText());
-            personas.add(new CEO(nombre, apellido, numRegistro, nacionalidad, titulo, edad, experiencia, laborando, usuario, password));
+
+            Persona x = new CEO(nombre, apellido, numRegistro, nacionalidad, titulo, edad, experiencia, laborando, usuario, password);
+            personas.add(x);
             ceo_usuario.setText("");
             ceo_password.setText("");
             ceo_nombre.setText("");
@@ -1511,6 +1584,22 @@ public class Principal extends javax.swing.JFrame {
             ceo_laborando.setText("");
             jd_ceo.setVisible(false);
             jButton1.setEnabled(false);
+            Object[] nuevo = {numRegistro, usuario, nombre, "CEO"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
+
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jtree.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            int aux = -1;
+            for (int i = 0; i < 10; i++) {
+                if(raiz.getChildAt(i).toString().equals("")){
+                    aux = 1;
+                }
+                
+            }
+           
+            DefaultMutableTreeNode nodo_persona = new DefaultMutableTreeNode(x);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1549,6 +1638,10 @@ public class Principal extends javax.swing.JFrame {
             admin_jefe.setText("");
             admin_registro.setText("");
             admin_sub.setText("");
+            Object[] nuevo = {numRegistro, usuario, nombre, "Administracion"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1567,7 +1660,7 @@ public class Principal extends javax.swing.JFrame {
             String acuerdo = con_acuerdo.getText();
             int numRegistro = Integer.parseInt(con_registro.getText());
             int becados = Integer.parseInt(con_becados.getText());
-            int persona = Integer.parseInt(con_personas.getText());            
+            int persona = Integer.parseInt(con_personas.getText());
             personas.add(new Consejo(nombre, apellido, numRegistro, cargo, becados, persona, segTrabajo, acuerdo, usuario, password));
             con_second.setText("");
             con_pass.setText("");
@@ -1579,6 +1672,10 @@ public class Principal extends javax.swing.JFrame {
             con_registro.setText("");
             con_becados.setText("");
             con_personas.setText("");
+            Object[] nuevo = {numRegistro, usuario, nombre, "Consejo Academico"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1607,6 +1704,10 @@ public class Principal extends javax.swing.JFrame {
             planta_carrera.setText("");
             planta_clase.setText("");
             planta_registro.setText("");
+            Object[] nuevo = {numRegistro, usuario, nombre, "Personal de Planta"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1625,14 +1726,14 @@ public class Principal extends javax.swing.JFrame {
             String conocimiento = doc_area.getText();
             boolean distintas;
             boolean lab;
-            if(facultad_s.isSelected()){
+            if (facultad_s.isSelected()) {
                 distintas = true;
-            }else{
+            } else {
                 distintas = false;
             }
-            if(lab_s.isSelected()){
+            if (lab_s.isSelected()) {
                 lab = true;
-            }else{
+            } else {
                 lab = false;
             }
             int numRegistro = Integer.parseInt(planta_registro.getText());
@@ -1644,6 +1745,10 @@ public class Principal extends javax.swing.JFrame {
             doc_clase.setText("");
             doc_facultad.setText("");
             doc_area.setText("");
+            Object[] nuevo = {numRegistro, usuario, nombre, "Docente"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1662,14 +1767,14 @@ public class Principal extends javax.swing.JFrame {
             String facultad = est_facultad.getText();
             boolean becado;
             boolean carro;
-            if(facultad_s1.isSelected()){
+            if (facultad_s1.isSelected()) {
                 becado = true;
-            }else{
+            } else {
                 becado = false;
             }
-            if(lab_s1.isSelected()){
+            if (lab_s1.isSelected()) {
                 carro = true;
-            }else{
+            } else {
                 carro = false;
             }
             int numRegistro = Integer.parseInt(est_registro.getText());
@@ -1684,6 +1789,10 @@ public class Principal extends javax.swing.JFrame {
             est_facultad.setText("");
             est_registro.setText("");
             est_clases.setText("");
+            Object[] nuevo = {numRegistro, usuario, nombre, "Estudiante"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1704,19 +1813,19 @@ public class Principal extends javax.swing.JFrame {
             boolean becado;
             boolean carro;
             boolean lab;
-            if(facultad_s2.isSelected()){
+            if (facultad_s2.isSelected()) {
                 becado = true;
-            }else{
+            } else {
                 becado = false;
             }
-            if(lab_s2.isSelected()){
+            if (lab_s2.isSelected()) {
                 carro = true;
-            }else{
+            } else {
                 carro = false;
             }
-            if(tut_s.isSelected()){
+            if (tut_s.isSelected()) {
                 lab = true;
-            }else{
+            } else {
                 lab = false;
             }
             int numRegistro = Integer.parseInt(est_registro1.getText());
@@ -1731,6 +1840,10 @@ public class Principal extends javax.swing.JFrame {
             est_facultad.setText("");
             est_registro.setText("");
             est_clases.setText("");
+            Object[] nuevo = {numRegistro, usuario, nombre, "Tutor"};
+            DefaultTableModel t = (DefaultTableModel) tabla_todos.getModel();
+            t.addRow(nuevo);
+            tabla_todos.setModel(t);
             JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "ERROR");
@@ -1785,6 +1898,22 @@ public class Principal extends javax.swing.JFrame {
         jd_tutor.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        jd_todos.setModal(true);
+        jd_todos.pack();
+        jd_todos.setLocationRelativeTo(this);
+        jd_todos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        jd_yo.setModal(true);
+        jd_yo.pack();
+        jd_yo.setLocationRelativeTo(this);
+        jd_yo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1796,7 +1925,7 @@ public class Principal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -1839,7 +1968,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton agregar_planta;
     private javax.swing.JButton agregar_tutor;
     private javax.swing.JButton but_Login;
-    private javax.swing.JButton but_signout;
     private javax.swing.JButton but_signup;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -1986,11 +2114,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_admin;
@@ -2004,6 +2135,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_todos;
     private javax.swing.JDialog jd_tutor;
     private javax.swing.JDialog jd_yo;
+    private javax.swing.JTree jtree;
     private javax.swing.JRadioButton lab_n;
     private javax.swing.JRadioButton lab_n1;
     private javax.swing.JRadioButton lab_n2;
@@ -2021,6 +2153,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField planta_pass;
     private javax.swing.JTextField planta_registro;
     private javax.swing.JTextField planta_usuario;
+    private javax.swing.JTable tabla_todos;
+    private javax.swing.JTable tabla_yo;
     private javax.swing.JTextField tf_user;
     private javax.swing.JRadioButton tut_n;
     private javax.swing.JRadioButton tut_s;
